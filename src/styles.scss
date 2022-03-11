@@ -1,0 +1,10 @@
+@import '@core/scss/core.scss';
+@import './assets/scss/styles';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.div-space-default {
+    width: 15px;
+    height: 15px;
+}
+

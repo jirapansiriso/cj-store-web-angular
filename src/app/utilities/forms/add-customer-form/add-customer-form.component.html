@@ -1,0 +1,60 @@
+<div>
+  <div>
+    <h2 class="title">เพิ่มลูกค้า</h2>
+  </div>
+  <div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="addCustomerForm">
+
+      <!-- firstname and lastname -->
+      <div class="row">
+
+        <!-- firstname -->
+        <div class="col-6">
+          <label id='name-label'>ชื่อ</label>
+          <input type="text" formControlName="firstname" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" placeholder="ชื่อ"
+            aria-describedby="customer-firstname" required id='firstname' tabindex="1" />
+
+          <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+            <div *ngIf="f.firstname.errors.required">กรุณากรอกชื่อ</div>
+          </div>
+        </div>
+
+        <!-- lastname -->
+        <div class="col-6">
+          <label id='name-label'>นามสกุล</label>
+          <input type="text" formControlName="lastname" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" placeholder="นามสกุล"
+            aria-describedby="customer-lastname" required id='lastname' tabindex="2" />
+          <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+            <div *ngIf="f.lastname.errors.required">กรุณากรอกนามสกุล</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="div-space-default"></div>
+
+      <!-- phone -->
+      <div class="row">
+        <div class="col-6">
+          <label id='name-label'>เบอร์มือถือ</label>
+          <input type="number" formControlName="phone" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" placeholder="เบอร์มือถือ"
+            aria-describedby="customer-phone" required id='phone' tabindex="3" />
+          <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+            <div *ngIf="f.phone.errors.required">กรุณากรอกเบอร์มือถือ</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- button  -->
+      <div class="div-button row">
+        <button (click)="cancelClicked()" class="btn button" rippleEffect type="button">ยกเลิก</button>
+        <button [disabled]="loading" class="btn btn-primary btn-block button" tabindex="4" rippleEffect type='submit'
+          id='submit'>
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>เพิ่ม
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
