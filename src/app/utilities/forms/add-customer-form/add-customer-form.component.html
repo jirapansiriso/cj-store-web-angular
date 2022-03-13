@@ -38,11 +38,12 @@
       <div class="row">
         <div class="col-6">
           <label id='name-label'>เบอร์มือถือ</label>
-          <input type="number" formControlName="phone" class="form-control"
+          <input type="tel" pattern="[0-9]{10}" formControlName="phone" class="form-control"
             [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" placeholder="เบอร์มือถือ"
             aria-describedby="customer-phone" required id='phone' tabindex="3" />
           <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
             <div *ngIf="f.phone.errors.required">กรุณากรอกเบอร์มือถือ</div>
+            <div *ngIf="f.phone.errors.pattern">ข้อมูลไม่ถูกต้อง</div>
           </div>
         </div>
       </div>
@@ -50,9 +51,17 @@
       <!-- button  -->
       <div class="div-button row">
         <button (click)="cancelClicked()" class="btn button" rippleEffect type="button">ยกเลิก</button>
-        <button [disabled]="loading" class="btn btn-primary btn-block button" tabindex="4" rippleEffect type='submit'
-          id='submit'>
+        <button [disabled]="loading" *ngIf="customer == null ? true : false" class="btn btn-primary btn-block button"
+          tabindex="4" rippleEffect type='submit' id='submit'>
           <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>เพิ่ม
+        </button>
+        <button (click)="onDeleteClicked(customer)" *ngIf="customer != null ? true : false"
+          class="btn button delete-button" type='button'>
+          ลบ
+        </button>
+        <button [disabled]="loading" *ngIf="customer != null ? true : false" class="btn btn-primary btn-block button"
+          tabindex="4" rippleEffect type='submit' id='submit'>
+          บันทึก
         </button>
       </div>
     </form>

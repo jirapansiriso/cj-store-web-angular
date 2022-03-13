@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.checkAuthenticated();
     this.contentHeader = {
-      headerTitle: "Dashboard",
+      headerTitle: "สรุป",
       actionButton: false,
     };
   }

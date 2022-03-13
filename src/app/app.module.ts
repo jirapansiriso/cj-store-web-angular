@@ -1,4 +1,4 @@
-import { InfoDialogComponent } from './utilities/dialogs/info-dialog/info-dialog.component';
+import { InfoDialogComponent } from "./utilities/dialogs/info-dialog/info-dialog.component";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
@@ -21,6 +21,8 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatDialogModule } from "@angular/material/dialog";
 import { ListViewModule } from "@syncfusion/ej2-angular-lists";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { DataTablesModule } from "angular-datatables";
+// import { MatSelectModule } from "@angular/material/select";
 
 const appRoutes: Routes = [
   {
@@ -76,6 +78,9 @@ const appRoutes: Routes = [
 
     // dialog
     MatDialogModule,
+
+    // datatable
+    DataTablesModule,
   ],
 
   bootstrap: [AppComponent],

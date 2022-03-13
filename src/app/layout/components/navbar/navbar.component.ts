@@ -45,6 +45,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public navigation: any;
   public selectedLanguage: any;
 
+  fullname: string = '';
+
   @HostBinding("class.fixed-top")
   public isFixed = false;
 
@@ -191,6 +193,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this._router.navigate(["/pages/authentication/login"]);
   }
 
+  setFullname(){
+    this.fullname = this.sessionService.getFullname() ?? '';
+  }
+
   // Lifecycle Hooks
   // -----------------------------------------------------------------------------------------------------
 
@@ -239,6 +245,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.selectedLanguage = _.find(this.languageOptions, {
       id: this._translateService.currentLang,
     });
+
+    this.setFullname();
   }
 
   /**

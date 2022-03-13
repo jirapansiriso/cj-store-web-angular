@@ -25,7 +25,7 @@ export class OrderComponent implements OnInit {
   ngOnInit() {
     this.checkAuthenticated();
     this.contentHeader = {
-      headerTitle: "Order",
+      headerTitle: "ออร์เดอร์",
       actionButton: false,
       breadcrumb: {
         type: "",

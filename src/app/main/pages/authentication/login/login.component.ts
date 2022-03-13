@@ -93,8 +93,10 @@ export class AuthLoginComponent implements OnInit {
         if (data["success"]) {
           const session = data["session"];
           const accessToken = session["access_token"];
+          const user = session["user"];
           if (accessToken != null) {
-            this.sessionService.saveAccessToken(accessToken);
+            this.sessionService.setAccessToken(accessToken);
+            this.sessionService.setFullname(user['firstname'] + " " + user['lastname']);
             this.goToMain();
           }
         }

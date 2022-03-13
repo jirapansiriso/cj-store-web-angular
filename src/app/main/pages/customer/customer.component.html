@@ -2,21 +2,44 @@
   <div class="content-body">
 
     <!-- content-header component -->
-    <app-content-header [contentHeader]="contentHeader" ></app-content-header>
+    <app-content-header [contentHeader]="contentHeader"></app-content-header>
 
     <div class="card">
       <!-- add button -->
-      <div class="div-add-button card-body pb-1">
-        <button (click)="addClicked()" class="btn btn-primary add-button" rippleEffect>เพิ่ม</button>
+      <div class="card-body row">
+        <div class="col-8">
+
+          <input type="text" class="form-control input-search" placeholder="ลองค้นหาดูสิ" id='search'
+            (keyup.enter)="onSearchEnter()" />
+        </div>
+        <div class="col-4">
+          <div class="div-add-button">
+            <button (click)="onAddClicked()" class="btn btn-primary add-button" rippleEffect>เพิ่ม</button>
+          </div>
+        </div>
       </div>
       <!-- body -->
-      <div class="card-header">
-        <h4 class="card-title">Kick start your project 🚀</h4>
-      </div>
-      <div class="card-body pb-1">
-        
-        <!-- table -->
-        
+      <div class="div-table">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col" sortable="firstname" class="table-header">ชื่อ</th>
+              <th scope="col" sortable="lastname" class="table-header">นามสกุล</th>
+              <th scope="col" sortable="phone_number" class="table-header">เบอร์มือถือ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let customer of customers" (click)="customerClicked(customer)">
+              <td>{{ customer.firstname }}</td>
+              <td>{{ customer.lastname }}</td>
+              <td>{{ customer.phone_number }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- more button -->
+        <div class="div-more-button" *ngIf="!isNoMore">
+          <button (click)="onMoreClicked()" class="btn  more-button" rippleEffect>โหลดเพิ่ม</button>
+        </div>
       </div>
     </div>
   </div>

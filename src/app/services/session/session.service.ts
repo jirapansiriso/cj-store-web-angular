@@ -8,12 +8,20 @@ import { HOST, LOGIN_API } from "./../service.config";
 export class SessionService {
   constructor(private http: HttpClient) {}
 
-  saveAccessToken(accessToken: string){
+  setAccessToken(accessToken: string){
     localStorage.setItem("accessToken", accessToken);
   }
 
   getAccessToken(): string{
     return localStorage.getItem("accessToken");
+  }
+
+  setFullname(fullname: string){
+    localStorage.setItem("fullname", fullname);
+  }
+
+  getFullname(): string{
+    return localStorage.getItem("fullname");
   }
 
   checkAuthenticated(router: Router) {
